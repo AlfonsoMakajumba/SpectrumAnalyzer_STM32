@@ -1,15 +1,24 @@
-//i promise i will do it properly one
-
+#include "Inc/stm32f446xx.h"
 #include <stdint.h>
+
 #define SYS_CLOCK 16000000 //16MHz base, can be changed later when or if i add PLL
 
-uint32_t cycles_ps = SYS_CLOCK / 8000; 
+volatile uint32_t msElapsed = 0;
 
-void delay_ms(volatile uint32_t ms)
+void SysTick_init(void)
 {
-    uint32_t count = ms * cycles_ps;
-    while(count--)
-    {
-        __asm("nop"); //assembly inline for skipping a cycle of a CPU
-    }
+    SysTick -> LOAD = (SYS_CLOCK / 1000) - 1;
+    SysTick -> VAL = 0;
+    SysTick -> CTRL = (1 << 0) | (1 << 1) | (1 << 2);
+}
+
+void SysTick_Handler(void)
+{
+    msElapsed++;
+}
+
+void delay_ms(uint32_t ms)
+{
+    uint32_t time = msElapsed;
+    while((msElapsed - time) < ms);
 }
