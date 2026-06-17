@@ -32,6 +32,18 @@
 			"preset": "Debug",
 			"problemMatcher": [],
 			"detail": "CMake template clean task"
+		},
+		{
+			"type": "cmake",
+			"label": "CMake: build",
+			"command": "build",
+			"targets": [
+				"all"
+			],
+			"preset": "Debug",
+			"group": "build",
+			"problemMatcher": [],
+			"detail": "CMake template build task"
 		}
 	]
 }
