@@ -15,12 +15,12 @@
  *
  ******************************************************************************
  */
-
-#define STM32F446xx
+#include "config.h"
 #include <stdint.h>
 #include "Inc/stm32f4xx.h"
 
 #include "delay.h"
+#include "uart.h"
 
 int main(void)
 {
@@ -30,9 +30,12 @@ int main(void)
 
     SysTick_init();
 
+    uart_init(115200);
+
 	while(1)
     {
         GPIOA -> ODR ^= (1 << 5); //sets PA5 to high if its low and to low if its high, RM0390 p. 187/1321
+        ser_print("Led changed");
         delay_ms(1000);
     }
 }
