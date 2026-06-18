@@ -27,7 +27,7 @@ void uart_init(uint32_t baud)
     //we are left with Baud = f_ck / (16 * USARTDIV), which translates to
     //USARTDIV = f_ck / (16 * Baud), and since we have manttis and a fraction represented with 4 bits, 
     //we have to multiply the result by 16(every bit in fraction is 1/2, so its 1/2 multiplied to the power of 4
-    //which leaves us with 1/16, so its gets cancelled via multiplication by 16)
+    //which leaves us with 1/16, so it gets cancelled via multiplication by 16)
     //so the final formula is USARTDIV = f_ck / Baud 
     //apply only to cases with OVER8 == 8
 
