@@ -1,13 +1,12 @@
 #include "Inc/stm32f446xx.h"
 #include <stdint.h>
-
-#define SYS_CLOCK 16000000 //16MHz base, can be changed later when or if i add PLL
+#include "config.h"
 
 volatile uint32_t msElapsed = 0;
 
 void SysTick_init(void)
 {
-    SysTick -> LOAD = (SYS_CLOCK / 1000) - 1;
+    SysTick -> LOAD = (CPU_CLOCK / 1000) - 1;
     SysTick -> VAL = 0;
     SysTick -> CTRL = (1 << 0) | (1 << 1) | (1 << 2);
 }
