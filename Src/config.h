@@ -1,0 +1,2 @@
+#define CPU_CLOCK 16000000
+#define STM32F446xx
