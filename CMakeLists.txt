@@ -88,7 +88,10 @@ link_directories(${CMAKE_PROJECT_NAME} ${link_DIRS})
 # Create an executable object type
 add_executable(${CMAKE_PROJECT_NAME}
  Src/delay.c
- Src/delay.h)
+ Src/delay.h
+ Src/uart.c
+ Src/config.h
+ Src/uart.h)
 
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PUBLIC ${sources_SRCS})
